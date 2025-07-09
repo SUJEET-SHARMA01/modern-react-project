@@ -45,7 +45,7 @@ function Navbar() {
         <a
           href="#get in touch"
           className="hidden md:block font-bold border px-3 py-2 rounded-lg bg-blue-500 text-white
-       hover:shadow-lg hover:bg-slate-50 hover:text-blue-600 transition-colors"
+       hover:shadow-lg hover:bg-slate-50 hover:text-blue-600 transition-colors active:bg-slate-400"
         >
           Get in touch
         </a>
