@@ -81,7 +81,7 @@ function Navbar() {
                 {link.label}
               </a>
             ))}
-             <button className="bg-blue-600 w-full py-2 rounded-lg text-white">
+             <button onClick={()=>setmenu(false)} className="bg-blue-600 w-full py-2 rounded-lg text-white">
                 Get in touch
              </button>
         
