@@ -2,6 +2,7 @@ import React from 'react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Companylogo from './components/Companylogo'
+import PurposeSection from './components/PurposeSection'
 
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
       <Navbar/>
       <Hero/>
       <Companylogo/>
+      <PurposeSection/>
       </div>
   </main>
   )
