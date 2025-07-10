@@ -3,7 +3,7 @@ import { FaStar } from "react-icons/fa";
 import heroImage from "../assets/hero-image.png";
 const Hero = () => {
   return (
-    <section className="container flex flex-col md:flex-row mx-auto justify-between items-center pb-6 pt-44 sm:px-6 px-4  lg:px-8">
+    <section id="home" className=" container flex flex-col md:flex-row mx-auto justify-between items-center pb-6 pt-44 sm:px-6 px-4  lg:px-8">
       <div className="w-full md:w-1/2 space-y-8 ">
         <div className="flex gap-6 border w-fit p-3 rounded-full bg-gray-50 hover:bg-white cursor-pointer">
           <span className="text-blue-600 group-hover:scale-150 transition-transform duration-300 inline-block">
