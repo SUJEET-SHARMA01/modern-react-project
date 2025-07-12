@@ -41,7 +41,7 @@ export default function FeatureSection() {
               {icon.icon}
             </div>
             <div className="flex flex-col items-center px-5">
-              <h2 className="text-2xl font-semibold">{icon.title}</h2>
+              <h2 className="text-2xl font-semibold text-center">{icon.title}</h2>
               <p className="text-gray-600 text-center mt-3" >{icon.description}</p>
             </div>
             </div>
