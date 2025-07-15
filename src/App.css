@@ -1,12 +1,34 @@
-.animate-marquee{
+.animate-marquee {
   animation: marquee 30s linear infinite;
-  
 }
-@keyframes marquee{
+@keyframes marquee {
   0% {
     transform: translateX(0);
   }
-  100%{
+  100% {
     transform: translateX(-50%);
   }
+}
+
+.testimonial-swiper {
+  padding: 20px 0;
+}
+
+.testimonial-swiper .swiper-slide {
+  height: auto;
+}
+
+/* hide default swiper button navigation */
+.testimonial-swiper .swiper-slide-next::after,
+.testimonial-swiper .swiper-slide-prev::after {
+  display: none;
+}
+.swiper-slide-next,
+.swiper-slide-prev {
+  display: none;
+}
+.swiper-button-next-custom.swiper-button-disabled,
+.swiper-button-prev-custom.swiper-button-disabled {
+  opacity: 0;
+  cursor: not-allowed;
 }
