@@ -3,6 +3,8 @@ import { BsStack } from "react-icons/bs";
 import { HiLightBulb } from "react-icons/hi";
 import { FiSettings } from "react-icons/fi";
 import { BiTime } from "react-icons/bi";
+import { motion } from "framer-motion";
+import { fadeIn} from "../motion/motion";
 
 const services = [
   {
@@ -32,28 +34,48 @@ const services = [
 ];
 function ServiceSection() {
   return (
-    <section id="services" className="container sm:px-6 lg:px-8  py-20 px-6  ">
+    <motion.section 
+      variants={fadeIn('up', 0.2)}
+              initial="hidden"
+              whileInView="show"
+    id="services" className="container sm:px-6 lg:px-8  py-20 px-6  ">
       <div className="flex flex-col md:flex-row items-center justify-between gap-12 lg-gap-24">
         <div className="md:w-1/3">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 md:w-4/5">
+          <motion.h2
+            variants={fadeIn('right', 0.4)}
+                    initial="hidden"
+                    whileInView="show"
+          className="text-3xl md:text-4xl font-bold mb-6 md:w-4/5">
             {" "}
             Future of support with new shape
-          </h2>
-          <p className="text-gray-600 text-lg md:w-4/5 mb-4">
+          </motion.h2>
+          <motion.p
+            variants={fadeIn('up', 0.2)}
+                    initial="hidden"
+                    whileInView="show"
+          className="text-gray-600 text-lg md:w-4/5 mb-4">
             Discuss your goals, determine success metrics, identify problems
-          </p>
+          </motion.p>
           <div className="space-y-2">
             <div className="flex gap-2">
               <div className="w-5 h-5 rounded-full bg-indigo-100 flex items-center justify-center">
                 <div className="w-2.5 h-2.5 bg-indigo-600 rounded-full"></div>
               </div>
-              <span className="text-gray-600">UX design content strategy</span>
+              <motion.span
+                variants={fadeIn('up', 0.4)}
+                        initial="hidden"
+                        whileInView="show"
+              className="text-gray-600">UX design content strategy</motion.span>
             </div>
             <div className="flex gap-2">
               <div className="w-5 h-5 rounded-full bg-indigo-100 flex items-center justify-center">
                 <div className="w-2.5 h-2.5 bg-indigo-600 rounded-full"></div>
               </div>
-              <span className="text-gray-600">Development bring</span>
+              <motion.span 
+                variants={fadeIn('up', 0.2)}
+                        initial="hidden"
+                        whileInView="show"
+              className="text-gray-600">Development bring</motion.span>
             </div>
           </div>
           <button className="mt-8 bg-indigo-600 py-3 text-white px-8 rounded-full transition-colors hover:bg-blue-700 cursor-pointer">
@@ -73,7 +95,7 @@ function ServiceSection() {
           ))}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }
 
