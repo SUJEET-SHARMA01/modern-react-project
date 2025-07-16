@@ -50,7 +50,7 @@ const testimonials = [
 ];
 function TestimonialsSection() {
   return (
-    <section id="testimonial" className=" py-16 px-4 max-w-8xl mx-auto">
+    <section id="testimonials" className=" py-16 px-4 max-w-8xl mx-auto">
       <div className="text-center mb-12">
         <h2 className="text-3xl md:text-4xl font-bold">
           What our happy client say

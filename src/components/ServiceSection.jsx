@@ -32,7 +32,7 @@ const services = [
 ];
 function ServiceSection() {
   return (
-    <section id="service" className="container sm:px-6 lg:px-8  py-20 px-6  ">
+    <section id="services" className="container sm:px-6 lg:px-8  py-20 px-6  ">
       <div className="flex flex-col md:flex-row items-center justify-between gap-12 lg-gap-24">
         <div className="md:w-1/3">
           <h2 className="text-3xl md:text-4xl font-bold mb-6 md:w-4/5">

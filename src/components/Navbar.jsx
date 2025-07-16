@@ -1,96 +1,125 @@
-import React, { useState } from "react";
-import { href } from "react-router-dom";
-import { IoMenu } from "react-icons/io5";
-import { HiMenu, HiX } from "react-icons/hi";
+import React, { useState } from 'react'
+import { HiMenu, HiX } from 'react-icons/hi'
+import { motion } from "framer-motion";
+import { fadeIn} from "../motion/motion";
 
-function Navbar() {
-  const [activelink, setactivelink] = useState("#home");
-  const [ismenu, setmenu] = useState(false);
-  const navbar = [
+const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [activeLink, setActiveLink] = useState('#home')
+
+  const navLinks = [
     { href: "#home", label: "Home" },
-    { href: "#about", label: "About" },
-    { href: "#service", label: "Service" },
-    { href: "#testimonial", label: "Testimonial" },
-  ];
-  return (
-    <nav className="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-sm border-green-100 z-50 shadow">
-      <div className="w-full container items-center  flex justify-between mx-auto px-4 sm:px-6 lg:px-8 md:h-20 h-16">
-        {/* logo section */}
-        <div className="flex items-center gap-1">
-          <div className="w-4 h-4 bg-blue-700  rounded-lg opacity-75 hover:opacity-100 cursor-pointer transition-opacity"></div>
-          <div className="w-4 h-4 bg-red-700  rounded-lg opacity-100 hover:opacity-75 cursor-pointer -ml-2 transition-opacity"></div>
-        </div>
+    { href: "#about", label: "About Us" },
+    { href: "#services", label: "Our Service" },
+    { href: "#testimonials", label: "Testimonials" },
+  ]
 
-        {/* navigation section */}
-        <div className=" md:flex hidden gap-10 items-center">
-          {navbar.map((link, index) => (
-            <a
+  return (
+    <motion.nav 
+      variants={fadeIn('down', 0.2)}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true }}
+      className="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-sm z-50 border-b border-gray-100 shadow-sm"
+    >
+      <div className="w-full flex justify-between items-center container mx-auto px-4 sm:px-6 lg:px-8 md:h-20 h-16">
+        {/* Logo */}
+        <motion.div 
+          variants={fadeIn('right', 0.3)}
+          className="flex items-center gap-1 cursor-pointer"
+        >
+          <motion.div 
+            whileHover={{ scale: 1.1 }}
+            className="w-4 h-4 bg-blue-600 rounded-full opacity-75 hover:opacity-100 transition-opacity"
+          ></motion.div>
+          <motion.div 
+            whileHover={{ scale: 1.1 }}
+            className="w-4 h-4 bg-red-500 rounded-full -ml-2 hover:opacity-75 transition-opacity"
+          ></motion.div>
+        </motion.div>
+        {/* Mobile Menu Button */}
+        <motion.button 
+          variants={fadeIn('left', 0.3)}
+          className="md:hidden p-2"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+        >
+          {isMenuOpen ? (
+            <HiX className="h-6 w-6" />
+          ) : (
+            <HiMenu className="h-6 w-6" />
+          )}
+        </motion.button>
+
+        {/* Navigation Links - Desktop */}
+        <motion.div 
+          variants={fadeIn('down', 0.3)}
+          className="hidden md:flex items-center gap-10"
+        >
+          {navLinks.map((link, index) => (
+            <motion.a 
               key={index}
+              variants={fadeIn('down', 0.1 * (index + 1))}
               href={link.href}
-              onClick={() => setactivelink(link.href)}
-              className={`
-              text-sm font-medium relative after:absolute after:left-0 after:bottom-0 after:h-0.5 after:bg-blue-600 after:w-0
-               hover:after:w-full after:transition-all after:duration-300 ${
-                 activelink === link.href
-                   ? "text-blue-600 after:w-full"
-                   : "text-gray-600 hover:text-gray-900"
-               }`}
+              onClick={() => setActiveLink(link.href)}
+              className={`text-sm font-medium relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-blue-600 after:transition-all
+                ${activeLink === link.href ? 'text-blue-600 after:w-full  ' : 'text-gray-600 hover:text-gray-900'}`}
             >
               {link.label}
-            </a>
+            </motion.a>
           ))}
-        </div>
+        </motion.div>
 
-        {/* get start section */}
-        <a
-          href="#get in touch"
-          className="hidden md:block font-bold border px-3 py-2 rounded-lg bg-blue-500 text-white
-       hover:shadow-lg hover:bg-slate-50 hover:text-blue-600 transition-colors active:bg-slate-400"
+        {/* CTA Button */}
+        <motion.button 
+          variants={fadeIn('left', 0.3)}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          className="hidden md:block bg-blue-600 text-white px-6 py-2.5 rounded-lg hover:bg-blue-700 text-sm font-medium transition-all hover:shadow-lg hover:shadow-blue-100"
         >
-          Get in touch
-        </a>
-        {/* menu button section */}
-        <button
-          className="lg:hidden md:hidden p-2 text-xl"
-          onClick={() => setmenu(!ismenu)}
-        >
-          {ismenu ? <HiX /> : <HiMenu />}
-        </button>
+          <a href="#newsletter">Get in touch</a>
+        </motion.button>
       </div>
 
-      {/* mobile menu items */}
-
-      {ismenu && (
-        <div className="md:hidden  bg-white border-t py-6 ml-2 ">
-          <div className="container mx-auto space-y-6 px-3">
-            {navbar.map((link, index) => (
-              <a
-              onClick={()=>{
-                setactivelink(link.href);
-                setmenu(false)
-              }}
-             
+      {/* Mobile Menu */}
+      {isMenuOpen && (
+        <motion.div 
+          variants={fadeIn('down', 0.2)}
+          initial="hidden"
+          animate="show"
+          className="md:hidden bg-white border-t border-gray-100 py-4"
+        >
+          <motion.div 
+            variants={fadeIn('down', 0.3)}
+            className="container mx-auto px-4 space-y-4"
+          >
+            {navLinks.map((link, index) => (
+              <motion.a
                 key={index}
+                variants={fadeIn('right', 0.1 * (index + 1))}
                 href={link.href}
-                className={`block text-sm ${
-                  activelink === link.href
-                    ? "text-blue-600 after:w-full"
-                    : "text-gray-600 hover:text-gray-900"
-                }`}
+                onClick={() => {
+                  setActiveLink(link.href);
+                  setIsMenuOpen(false);
+                }}
+                className={`block text-sm font-medium py-2
+                  ${activeLink === link.href ? 'text-blue-600' : 'text-gray-600 hover:text-gray-900'}`}
               >
                 {link.label}
-              </a>
+              </motion.a>
             ))}
-             <button onClick={()=>setmenu(false)} className="bg-blue-600 w-full py-2 rounded-lg text-white">
-                Get in touch
-             </button>
-        
-          </div>
-          
-        </div>
+            <motion.button 
+              variants={fadeIn('up', 0.4)}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="w-full bg-blue-600 text-white px-6 py-2.5 rounded-lg hover:bg-blue-700 text-sm font-medium transition-all hover:shadow-lg hover:shadow-blue-100"
+            >
+              Get in touch
+            </motion.button>
+          </motion.div>
+        </motion.div>
       )}
-    </nav>
-  );
+    </motion.nav>
+  )
 }
 
-export default Navbar;
+export default Navbar
