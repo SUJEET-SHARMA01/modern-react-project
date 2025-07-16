@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { fadeIn, textVariant } from "../motion/motion";
 import { BsChevronLeft } from "react-icons/bs";
 import { BsChevronRight } from "react-icons/bs";
-import sujeet from "../assets/sujeet.jpg"
+import sujeet from "../assets/sujeet.JPG"
 import vishwash from "../assets/vishwash.jpeg"
 import vishal from "../assets/vishal.jpg"
 
