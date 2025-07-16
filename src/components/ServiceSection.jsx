@@ -83,17 +83,25 @@ function ServiceSection() {
           </button>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10" >
+        <motion.div 
+          variants={fadeIn('right', 0.4)}
+                        initial="hidden"
+                        whileInView="show"
+        className="grid grid-cols-1 md:grid-cols-2 gap-10" >
           {services.map((service, index) => (
-            <div key={index} className="bg-white max-w-72  rounded-xl hover:shadow-xl p-6 cursor-pointer transition-all hover:scale-105  duration-300 space-y-3">
+            <motion.div  
+              variants={fadeIn('up', 0.6)}
+                        initial="hidden"
+                        whileInView="show"
+            key={index} className="bg-white max-w-72  rounded-xl hover:shadow-xl p-6 cursor-pointer transition-all hover:scale-105  duration-300 space-y-3">
               <div className="mb-4">{service.icon}</div>
               <h3 className="text-2xl mb-2">{service.title}</h3>
               <p className="text-gray-600 mb-4">{service.description}</p>
               <a href={service.link} className="text-blue-600 font-medium transition-colors hover:text-indigo-700   ">LEARN MORE</a>
 
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </motion.section>
   );

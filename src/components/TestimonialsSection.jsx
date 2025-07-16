@@ -1,6 +1,12 @@
 import React, { useRef, useState } from "react";
+import { motion } from "framer-motion";
+import { fadeIn, textVariant } from "../motion/motion";
 import { BsChevronLeft } from "react-icons/bs";
 import { BsChevronRight } from "react-icons/bs";
+import sujeet from "../assets/sujeet.jpg"
+import vishwash from "../assets/vishwash.jpeg"
+import vishal from "../assets/vishal.jpg"
+
 import "../App.css"
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -14,19 +20,19 @@ const testimonials = [
   {
     id: 1,
     name: "Sujeet Sharma",
-    image: "../src/assets/IMG_E1143.jpg",
+    image: sujeet,
     text: "This landing page feels premium and well-structured. The CTA sections and service highlights are exactly what our users need.",
   },
   {
     id: 2,
     name: "Vishwash Kumar",
-    image: "../src/assets/vishwash.jpeg",
+    image: vishwash,
     text: "Your landing page looks clean, modern, and responsive — great use of design and layout. Love the interactive pricing and smooth animations, just needs a few small tweaks! ✅",
   },
   {
     id: 3,
     name: "Vishal Kumar",
-    image: "../src/assets/IMG-20241130-WA0008.jpg",
+    image: vishal,
     text: "When she reached the first hills of the Mountains, she had a last view back on the of her hometown Bookmarksgrove, the headline.",
   },
   {
@@ -50,17 +56,33 @@ const testimonials = [
 ];
 function TestimonialsSection() {
   return (
-    <section id="testimonial" className=" py-16 px-4 max-w-8xl mx-auto">
+    <motion.section 
+     variants={fadeIn('left', 0.4)}
+          initial="hidden"
+          whileInView="show"
+    id="testimonials" className=" py-16 px-4 max-w-8xl mx-auto">
       <div className="text-center mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold">
+        <motion.h2 
+         variants={fadeIn('left', 0.4)}
+              initial="hidden"
+              whileInView="show"
+        className="text-3xl md:text-4xl font-bold">
           What our happy client say
-        </h2>
-        <p className="text-gray-600 mt-5 ">
+        </motion.h2>
+        <motion.p 
+         variants={fadeIn('down', 0.4)}
+              initial="hidden"
+              whileInView="show"
+        className="text-gray-600 mt-5 ">
           Things that make it the best place to start trading
-        </p>
+        </motion.p>
       </div>
       {/* testimonial ssection */}
-      <div className="relative lg:px-32">
+      <motion.div
+        variants={fadeIn('up', 0.5)}
+                              initial="hidden"
+                              whileInView="show"
+      className="relative lg:px-32">
         <Swiper
           navigation={{
             nextEl: ".swiper-button-next-custom",
@@ -94,18 +116,26 @@ function TestimonialsSection() {
                     className="w-full h-full object-cover rounded-full"
                   />
                 </div>
-                <div className="flex text-center justify-center mt-4">
+                <motion.div
+                 variants={fadeIn('left', 0.2)}
+                      initial="hidden"
+                      whileInView="show"
+                className="flex text-center justify-center mt-4">
                   {[...Array(5)].map((_, index) => (
                     <span className="text-yellow-400">⭐</span>
                   ))}
-                </div>
-                <h1 className="text-lg font-semibold mt-3">{card.name}</h1>
-                <p className="text-gray-600">{card.text}</p>
+                </motion.div>
+                <motion.h1 className="text-lg font-semibold mt-3">{card.name}</motion.h1>
+                <motion.p 
+                 variants={fadeIn('down', 0.2)}
+                      initial="hidden"
+                      whileInView="show"
+                className="text-gray-600">{card.text}</motion.p>
               </div>
             </SwiperSlide>
           ))}
         </Swiper>
-      </div>
+      </motion.div>
       <div className="flex justify-center gap-4 mt-8  ">
         <button className="w-12 h-12 rounded-full cursor-pointer border flex items-center justify-center hover:bg-blue-500 hover:text-white transition-all active:hover:bg-blue-300 duration-200 swiper-button-prev-custom">
           <BsChevronLeft className="size-6" />
@@ -118,7 +148,7 @@ function TestimonialsSection() {
       {/*  swiper card */}
 
       {/* navigation button */}
-    </section>
+    </motion.section>
   );
 }
 
