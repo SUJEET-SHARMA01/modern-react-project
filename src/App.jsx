@@ -28,7 +28,7 @@ function App() {
       <ScheduleSection/>
       <MonitorSection/>
       <PriceingSection/>
-      <ServiceSection/>
+      <ServicesSection/>
       <TestimonialsSection/>
       <NewsletterSection/>
       <Footer/>
